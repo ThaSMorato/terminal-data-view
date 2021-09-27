@@ -7,6 +7,7 @@ const DEFAULT_LANG = "pt-BR";
 const STOP_TERM = ":q";
 
 const terminalController = new TerminalController();
+DraftLog(console).addLineListener(process.stdin);
 terminalController.initializeTerminal(database, DEFAULT_LANG);
 
 const mainLoop = async () => {

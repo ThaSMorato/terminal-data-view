@@ -11,7 +11,6 @@ export default class TerminalController {
   }
 
   initializeTerminal(database, language) {
-    DraftLog(console).addLineListener(process.stdin);
     this.terminal = readline.createInterface({
       input: process.stdin,
       output: process.stdout,

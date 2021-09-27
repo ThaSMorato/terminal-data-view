@@ -1,25 +1,21 @@
-import mocha from "mocha";
-import chai from "chai";
+import { describe, test, expect } from "@jest/globals";
 import Person from "../src/person.js";
 
-const { expect } = chai;
-const { describe, it } = mocha;
-
 describe("Person test", () => {
-  it("should return a person instance from a string", () => {
+  test("should return a person instance from a string", () => {
     const person = Person.generateInstanceFromString("2 Skate,Bike 100000 2019-02-01 2021-05-04");
-    const expected = {
+    const expected = new Person({
       from: "2019-02-01",
       to: "2021-05-04",
       vehicles: ["Skate", "Bike"],
       kmTraveled: "100000",
       id: "2",
-    };
+    });
 
-    expect(person).to.be.deep.equal(expected);
+    expect(person).toStrictEqual(expected);
   });
 
-  it("should formart values from an instance", () => {
+  test("should formart values from an instance", () => {
     const person = new Person({
       from: "2019-02-01",
       to: "2021-05-04",
@@ -38,6 +34,6 @@ describe("Person test", () => {
       id: 2,
     };
 
-    expect(result).to.be.deep.equal(expected);
+    expect(result).toStrictEqual(expected);
   });
 });
